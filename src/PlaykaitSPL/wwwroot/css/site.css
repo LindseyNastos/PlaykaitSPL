@@ -1,0 +1,277 @@
+body {
+    background-image: url('../images/cabin4 (2).jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Carousel */
+.carousel-caption {
+    z-index: 10 !important;
+}
+
+    .carousel-caption p {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+@media (min-width: 768px) {
+    .carousel-caption {
+        z-index: 10 !important;
+    }
+}
+
+.separation-div {
+    border-bottom: 1px lightgray solid;
+}
+
+.list-buttons-div {
+    margin-bottom: 15px;
+}
+
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+}
+
+.partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+}
+
+/*navbar styling*/
+
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(255, 255, 255, 0.98);
+    padding-top: 13px;
+}
+
+#custom-bootstrap-menu.navbar-default {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 15px;
+    background-color: rgba(62, 90, 122, 1);
+    border-width: 0px;
+    border-radius: 0px;
+}
+
+    #custom-bootstrap-menu.navbar-default .navbar-nav > li > a {
+        color: rgba(207, 207, 207, 1);
+        background-color: rgba(248, 248, 248, 0);
+    }
+
+        #custom-bootstrap-menu.navbar-default .navbar-nav > li > a:hover,
+        #custom-bootstrap-menu.navbar-default .navbar-nav > li > a:focus {
+            color: rgba(153, 153, 153, 1);
+            background-color: rgba(248, 248, 248, 0);
+        }
+
+    #custom-bootstrap-menu.navbar-default .navbar-nav > .active > a,
+    #custom-bootstrap-menu.navbar-default .navbar-nav > .active > a:hover,
+    #custom-bootstrap-menu.navbar-default .navbar-nav > .active > a:focus {
+        color: rgba(51, 51, 51, 1);
+        background-color: rgba(231, 231, 231, 1);
+    }
+
+    #custom-bootstrap-menu.navbar-default .navbar-toggle {
+        border-color: #ddd;
+    }
+
+        #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+        #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+            background-color: #ddd;
+        }
+
+        #custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+            background-color: #888;
+        }
+
+        #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+        #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+            background-color: #3e5a7a;
+        }
+
+.jumbotron {
+    background-color: transparent;
+    padding-top: 20px;
+}
+
+.panel {
+    border-radius: 0px;
+    border: none;
+    opacity: 0.9;
+}
+
+.panel-footer {
+    background-color: rgba(62, 90, 122, 1);
+    border: none;
+    color: white;
+    border-radius: 0px;
+    text-align: center;
+}
+
+.card {
+    border-radius: 0px;
+    padding: 15px;
+    background-color: white;
+    opacity: 0.9;
+    display: inline-block;
+    margin: 5px;
+    width: 322px;
+}
+
+.card-header {
+    padding-top: 0px;
+    text-align: center;
+    height: 40px;
+    font-size: 24px;
+}
+
+.card-footer:last-child {
+    border-radius: 0px;
+}
+
+.card-columns {
+    @include media-breakpoint-only(lg) {
+        column-count: 4;
+    }
+
+    @include media-breakpoint-only(xl) {
+        column-count: 5;
+    }
+}
+
+.no-deco, .no-deco:hover, .no-deco:after, .no-deco:visited {
+    text-decoration: none;
+    color: #373a3c;
+}
+
+.icon-holder-div {
+    margin: 0 auto;
+    width: 80px;
+    padding: 5px 0 5px 0;
+}
+
+
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+    .sidebar-nav {
+        background-color: rgba(62, 90, 122, 1);
+        opacity: 0.9;
+        padding: 0px;
+        border-radius: 0px;
+        margin-top: 3px;
+        margin-left: 5px;
+    }
+
+        .sidebar-nav .navbar .navbar-collapse {
+            padding: 0;
+            max-height: none;
+            background-color: rgba(62, 90, 122, 1);
+            opacity: 0.9;
+            padding: 0px;
+            border-radius: 0px;
+        }
+
+        .sidebar-nav .navbar ul {
+            float: none;
+        }
+
+            .sidebar-nav .navbar ul:not {
+                display: block;
+            }
+
+        .sidebar-nav .navbar li {
+            float: none;
+            display: block;
+        }
+
+            .sidebar-nav .navbar li a {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+}
+
+@media (min-width: 544px) {
+    .navbar {
+        border-radius: 0px;
+        padding: 0px;
+        color: white;
+    }
+
+    .navbar-default {
+        border: none;
+    }
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #c3c3c3;
+}
+
+.filter-heading {
+    text-align: center;
+    padding: 5px;
+    font-size: 24px;
+}
+
+.add-form {
+    background-color: white;
+    opacity: 0.9;
+    padding: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom:20px;
+}
+
+    .add-form label {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+        font-size: 24px;
+    }
+
+.dropdown-menu {
+    width: 385px;
+}
+
+.uib-day button {
+    min-width: 90%;
+}
+
+.heading-div {
+    text-align:center;
+    font-size: 40px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+.no-accordion-deco, .no-accordion-deco:hover, .no-accordion-deco:after, .no-accordion-deco:visited {
+    text-decoration: none;
+}
+
+.month-btn {
+    margin:1px;
+    width:45px;
+}
+
+.all-months {
+    width:120px;
+    margin: 0 auto;
+}

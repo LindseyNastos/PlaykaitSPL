@@ -1,0 +1,153 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+        <div class="heading-div">
+            <a href="/add-bill" class="pull-left btn btn-warning">Add New Bill</a>
+            Bills
+        </div>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="sidebar-nav">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="visible-xs navbar-brand">Filter Results</span>
+                </div>
+                <div class="navbar-collapse collapse sidebar-navbar-collapse side-navbar">
+                    <ul class="nav navbar-nav">
+                        <li><div class="filter-heading">Filter Results</div></li>
+                        <!--<li ng-click="vm.billsByMonth()" class="active"><a href="#">Month</a></li>-->
+                        <li>
+                            <a href="#">
+                                <uib-accordion close-others="oneAtATime">
+                                    <div uib-accordion-group class="no-accordion-deco panel-default" heading="Month" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                        <div class="all-months">
+                                            <div class="row">
+                                                <button ng-click="vm.billsByMonth(1)" class="btn btn-sm btn-default month-btn">Jan</button>
+                                                <button ng-click="vm.billsByMonth(2)" class="btn btn-sm btn-default month-btn">Feb</button>
+                                                <button ng-click="vm.billsByMonth(3)" class="btn btn-sm btn-default month-btn">Mar</button>
+                                            </div>
+                                            <div class="row">
+                                                <button ng-click="vm.billsByMonth(4)" class="btn btn-sm btn-default month-btn">Apr</button>
+                                                <button ng-click="vm.billsByMonth(5)" class="btn btn-sm btn-default month-btn">May</button>
+                                                <button ng-click="vm.billsByMonth(6)" class="btn btn-sm btn-default month-btn">Jun</button>
+                                            </div>
+                                            <div class="row">
+                                                <button ng-click="vm.billsByMonth(7)" class="btn btn-sm btn-default month-btn">Jul</button>
+                                                <button ng-click="vm.billsByMonth(8)" class="btn btn-sm btn-default month-btn">Aug</button>
+                                                <button ng-click="vm.billsByMonth(9)" class="btn btn-sm btn-default month-btn">Sep</button>
+                                            </div>
+                                            <div class="row">
+                                                <button ng-click="vm.billsByMonth(10)" class="btn btn-sm btn-default month-btn">Oct</button>
+                                                <button ng-click="vm.billsByMonth(11)" class="btn btn-sm btn-default month-btn">Nov</button>
+                                                <button ng-click="vm.billsByMonth(12)" class="btn btn-sm btn-default month-btn">Dec</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </uib-accordion>
+                            </a>
+                        </li>
+                        <li ng-click="vm.billsByBill()">
+                            <a href="#">
+                                <uib-accordion close-others="oneAtATime">
+                                    <div uib-accordion-group class="no-accordion-deco panel-default" heading="Bill" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                        This content is straight in the template.
+                                    </div>
+                                </uib-accordion>
+                            </a>
+                        </li>
+                        <li ng-click="vm.billsByPrice()">
+                            <a href="#">
+                                <uib-accordion close-others="oneAtATime">
+                                    <div uib-accordion-group class="no-accordion-deco panel-default" heading="Price" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                        This content is straight in the template.
+                                    </div>
+                                </uib-accordion>
+                            </a>
+                        </li>
+                        <li ng-click="vm.unpaidBills()">
+                            <a href="#">
+                                <uib-accordion close-others="oneAtATime">
+                                    <div uib-accordion-group class="no-accordion-deco panel-default" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                        <uib-accordion-heading>
+                                            Unpaid<span style="margin-left:7px;" class="badge">11</span>
+                                        </uib-accordion-heading>
+                                        This content is straight in the template.
+                                    </div>
+                                </uib-accordion>
+                            </a>
+                        <!--<a href="#">Not Paid <span class="badge">11</span></a>-->
+                        </li>
+                        <li ng-click="vm.deletedBills()">
+                            <a href="#">
+                                <uib-accordion close-others="oneAtATime">
+                                    <div uib-accordion-group class="no-accordion-deco panel-default" heading="Deleted" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                        This content is straight in the template.
+                                    </div>
+                                </uib-accordion>
+                            </a>
+                        </li>
+                        <!--<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>-->
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-sm-9">
+        <div class="card-columns">
+            <div class="card text-xs-center" ng-repeat="bill in vm.bills">
+                <div style="border-radius:0px;" class="card-header default-color-dark white-text">
+                    {{bill.billName.name}}
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">{{bill.amount | currency}}</h4>
+                    <span ng-show="!bill.paid">
+                        <p>
+                            <strong style="color:#d9534f;">Not Paid</strong> <br />
+                        </p>
+                    </span>
+                    <span ng-show="bill.paid">
+                        <p>
+                            <strong>Paid</strong><br />
+                            {{bill.datePaid | date:'fullDate'}}
+                        </p>
+                    </span>
+                    <p>
+                        <strong>Notes</strong> <br />
+                        {{bill.notes}}
+                    </p>
+                </div>
+                <div class="card-footer text-muted default-color-dark white-text">
+                    <div class="list-buttons-div">
+                        <a class="btn btn-sm btn-info" href="bill-details/{{bill.id}}"><i class="fa fa-info-circle" aria-hidden="true"></i> Details</a>
+                        <a class="btn btn-sm btn-default" href="edit-bill/{{bill.id}}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                        <button ng-click="vm.showDeleteModal(bill)" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
