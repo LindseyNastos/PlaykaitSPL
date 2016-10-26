@@ -61,10 +61,14 @@
 
     <!--This one doesn't work yet-->
     <div class="form-group">
-        <label>
-            Image
-            <input type="text" placeholder="Image" class="form-control" />
-        </label>
+        <label>Image</label>
+        <br />
+            <button class="btn btn-default" ng-click="vm.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
+
+            <h2>{{vm.file.filename}}</h2>
+            <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />
+        
     </div>
+    <hr />
     <input class="btn btn-info" type="submit" value="Save" />
 </form>

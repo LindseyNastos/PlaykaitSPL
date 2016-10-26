@@ -4,6 +4,7 @@
         public newBill: PlaykaitSPL.Interfaces.ICabinBill;
         public billNames;
         public isPaid;
+        public file;
         public formats: string[] = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         public format: string = this.formats[0];
         public dt;
@@ -22,10 +23,15 @@
             showWeeks: true
         };
 
-        constructor(private billService: PlaykaitSPL.Services.BillService, private billNameService: PlaykaitSPL.Services.BillNameService, private $state: ng.ui.IStateService) {
-            this.getBillNames();
-            this.today();
-            this.toggleMin();
+        constructor(
+            private billService: PlaykaitSPL.Services.BillService,
+            private billNameService: PlaykaitSPL.Services.BillNameService,
+            private $state: ng.ui.IStateService,
+            private filepickerService,
+            private $scope: ng.IScope) {
+                this.getBillNames();
+                this.today();
+                this.toggleMin();
         }
 
         public addBill() {
@@ -34,6 +40,7 @@
                 this.newBill.paid = true;
             }
             debugger;
+            this.newBill.scannedImage = this.file;
             this.billService.saveBill(this.newBill).then((data) => {
                 this.$state.go("bill-details", { id: data.id });
             });
@@ -44,6 +51,22 @@
                 this.billNames = data;
             });
         }
+
+        //Filepicker methods
+        public pickFile() {
+            debugger;
+            this.filepickerService.pick(
+                { mimetype: 'image/*' },
+                this.fileUploaded.bind(this)
+            );
+        }
+
+        public fileUploaded(file) {
+            // save file url to database
+            this.file = file;
+            this.$scope.$apply(); // force page to update
+        }
+
 
         //Datepicker methods
         public toggleDatePopup() {

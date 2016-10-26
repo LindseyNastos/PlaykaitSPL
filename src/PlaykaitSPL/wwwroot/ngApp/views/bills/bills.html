@@ -23,9 +23,8 @@
                 <div class="navbar-collapse collapse sidebar-navbar-collapse side-navbar">
                     <ul class="nav navbar-nav">
                         <li><div class="filter-heading">Filter Results</div></li>
-                        <!--<li ng-click="vm.billsByMonth()" class="active"><a href="#">Month</a></li>-->
                         <li>
-                            <a href="#">
+                            <a class="accordion-filter" href="#">
                                 <uib-accordion close-others="oneAtATime">
                                     <div uib-accordion-group class="no-accordion-deco panel-default" heading="Month" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                                         <div class="all-months">
@@ -54,59 +53,61 @@
                                 </uib-accordion>
                             </a>
                         </li>
-                        <li ng-click="vm.billsByBill()">
-                            <a href="#">
+                        <li>
+                            <a class="accordion-filter" href="#">
                                 <uib-accordion close-others="oneAtATime">
                                     <div uib-accordion-group class="no-accordion-deco panel-default" heading="Bill" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                                        This content is straight in the template.
+                                        <div ng-repeat="name in vm.billNames">
+                                            <button ng-click="vm.billsByBillName(name.id)" class="btn btn-default bill-btn">{{name.name}}</button>
+                                        </div>
                                     </div>
                                 </uib-accordion>
                             </a>
                         </li>
-                        <li ng-click="vm.billsByPrice()">
-                            <a href="#">
+                        <li>
+                            <a class="accordion-filter" href="#">
                                 <uib-accordion close-others="oneAtATime">
                                     <div uib-accordion-group class="no-accordion-deco panel-default" heading="Price" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                                        This content is straight in the template.
+                                        <p>
+                                            <strong style="color:#d9534f;" ng-show="vm.priceErrors">Both values must be entered</strong>
+                                            Min: <input type="number" ng-model="vm.priceMin"/>
+                                            Max: <input type="number" ng-model="vm.priceMax"/>
+                                        </p>
+                                        <button ng-click="vm.billsByPrice()" class="btn btn-default bill-btn">Filter</button>
                                     </div>
                                 </uib-accordion>
                             </a>
                         </li>
-                        <li ng-click="vm.unpaidBills()">
-                            <a href="#">
+                        <li>
+                            <a class="accordion-filter" href="#">
                                 <uib-accordion close-others="oneAtATime">
                                     <div uib-accordion-group class="no-accordion-deco panel-default" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                                         <uib-accordion-heading>
-                                            Unpaid<span style="margin-left:7px;" class="badge">11</span>
+                                            Payment Status<span class="badge pull-right">{{vm.numUnpaid}} unpaid</span>
                                         </uib-accordion-heading>
-                                        This content is straight in the template.
+                                        <div>
+                                            <button ng-click="vm.filterByPaymentStatus(false)" class="btn btn-default bill-btn">
+                                                Unpaid <span style="margin-left:7px;" class="badge">{{vm.numUnpaid}}</span>
+                                            </button>
+                                            <button ng-click="vm.filterByPaymentStatus(true)" class="btn btn-default bill-btn">Paid</button>
+                                            <button ng-click="vm.getBills()" class="btn btn-default bill-btn">All</button>
+                                        </div>
                                     </div>
                                 </uib-accordion>
                             </a>
-                        <!--<a href="#">Not Paid <span class="badge">11</span></a>-->
                         </li>
-                        <li ng-click="vm.deletedBills()">
-                            <a href="#">
+                        <li>
+                            <a class="accordion-filter" href="#">
                                 <uib-accordion close-others="oneAtATime">
                                     <div uib-accordion-group class="no-accordion-deco panel-default" heading="Deleted" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                                        This content is straight in the template.
+                                        <div>
+                                            <button ng-click="vm.getDeletedBills()" class="btn btn-default bill-btn">Deleted</button>
+                                            <button ng-click="vm.getBills()" class="btn btn-default bill-btn">Active</button>
+                                        </div>
                                     </div>
                                 </uib-accordion>
                             </a>
                         </li>
-                        <!--<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>-->
-
                     </ul>
                 </div>
             </div>
@@ -143,7 +144,8 @@
                     <div class="list-buttons-div">
                         <a class="btn btn-sm btn-info" href="bill-details/{{bill.id}}"><i class="fa fa-info-circle" aria-hidden="true"></i> Details</a>
                         <a class="btn btn-sm btn-default" href="edit-bill/{{bill.id}}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                        <button ng-click="vm.showDeleteModal(bill)" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                        <button ng-show="bill.isActive" ng-click="vm.showDeleteModal(bill)" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                        <button ng-show="!bill.isActive" ng-click="vm.restoreBill(bill.id)" class="btn btn-sm btn-danger"><i class="fa fa-undo" aria-hidden="true"></i> Restore</button>
                     </div>
                 </div>
             </div>

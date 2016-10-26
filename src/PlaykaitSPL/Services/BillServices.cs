@@ -22,6 +22,7 @@ namespace PlaykaitSPL.Services
             var bills = _repo.Query<CabinBill>()
                 .Where(b => b.IsActive == true)
                 .Include(b => b.BillName)
+                .OrderByDescending(b => b.DateEntered)
                 .ToList();
             return bills;
         }
@@ -69,7 +70,7 @@ namespace PlaykaitSPL.Services
             return bills;
         }
 
-        public IList<CabinBill> BillsByBill(int billNameId) {
+        public IList<CabinBill> BillsByBillName(int billNameId) {
             var bills = _repo.Query<CabinBill>()
                 .Include(b => b.BillName)
                 .Where(b => b.IsActive == true)
@@ -78,16 +79,34 @@ namespace PlaykaitSPL.Services
             return bills;
         }
 
-        //public IList<CabinBill> BillsByPrice() {
-
-        //}
-
-        public IList<CabinBill> UnpaidBills() {
+        public IList<CabinBill> BillsByPrice(int min, int max)
+        {
             var bills = _repo.Query<CabinBill>()
                 .Include(b => b.BillName)
-                .Where(b => b.IsActive == true)
-                .Where(b => b.Paid == false)
+                .Where(b => b.IsActive)
+                .Where(b => b.Amount > min)
+                .Where(b => b.Amount < max)
                 .ToList();
+            return bills;
+        }
+
+        public IList<CabinBill> BillsByPaymentStatus(bool paymentStatus) {
+            var bills = new List<CabinBill>();
+            if (paymentStatus == false)
+            {
+                bills = _repo.Query<CabinBill>()
+                    .Include(b => b.BillName)
+                    .Where(b => b.IsActive == true)
+                    .Where(b => b.Paid == false)
+                    .ToList();
+            }
+            else if (paymentStatus == true) {
+                bills = _repo.Query<CabinBill>()
+                    .Include(b => b.BillName)
+                    .Where(b => b.IsActive == true)
+                    .Where(b => b.Paid == true)
+                    .ToList();
+            }
             return bills;
         }
 
@@ -97,6 +116,14 @@ namespace PlaykaitSPL.Services
                 .Where(b => b.IsActive == false)
                 .ToList();
             return bills;
+        }
+
+        public CabinBill RestoreDeletedBill(int id) {
+            var bill = _repo.Query<CabinBill>()
+                .FirstOrDefault(b => b.Id == id);
+            bill.IsActive = true;
+            _repo.SaveChanges();
+            return bill;
         }
 
     }

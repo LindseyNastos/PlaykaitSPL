@@ -271,7 +271,16 @@ textarea {
     width:45px;
 }
 
+.bill-btn {
+    margin:2px;
+    width:100%;
+}
+
 .all-months {
     width:120px;
     margin: 0 auto;
+}
+
+.accordion-filter {
+    padding-bottom:0px;
 }

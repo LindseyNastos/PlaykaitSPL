@@ -54,12 +54,6 @@ namespace PlaykaitSPL.API
             return BadRequest(ModelState);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
@@ -73,5 +67,41 @@ namespace PlaykaitSPL.API
             var bills = _service.BillByMonth(monthNum);
             return Ok(bills);
         }
+
+        [HttpGet("BillsByBillName/{billNameId}")]
+        public IActionResult BillsByBillName(int billNameId)
+        {
+            var bills = _service.BillsByBillName(billNameId);
+            return Ok(bills);
+        }
+
+        [HttpGet("BillsByPaymentStatus/{paymentStatus}")]
+        public IActionResult BillsByPaymentStatus(bool paymentStatus)
+        {
+            var bills = _service.BillsByPaymentStatus(paymentStatus);
+            return Ok(bills);
+        }
+
+        [HttpGet("DeletedBills")]
+        public IActionResult DeletedBills()
+        {
+            var bills = _service.DeletedBills();
+            return Ok(bills);
+        }
+
+        [HttpGet("RestoreDeletedBill/{id}")]
+        public IActionResult RestoreDeletedBill(int id)
+        {
+            var bill = _service.RestoreDeletedBill(id);
+            return Ok(bill);
+        }
+
+        [HttpGet("BillsByPrice/{min}/{max}")]
+        public IActionResult RestoreDeletedBill(int min, int max)
+        {
+            var bills = _service.BillsByPrice(min, max);
+            return Ok(bills);
+        }
+
     }
 }

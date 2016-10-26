@@ -12,5 +12,10 @@ namespace PlaykaitSPL.Services
         void HardDeleteBill(int id);
         void SoftDeleteBill(int id);
         IList<CabinBill> BillByMonth(int monthNum);
+        IList<CabinBill> BillsByBillName(int billNameId);
+        IList<CabinBill> BillsByPaymentStatus(bool paymentStatus);
+        IList<CabinBill> DeletedBills();
+        CabinBill RestoreDeletedBill(int id);
+        IList<CabinBill> BillsByPrice(int min, int max);
     }
 }

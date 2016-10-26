@@ -8,7 +8,7 @@
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
-<body ng-controller="AccountController as account">
+<body ng-controller="AccountController as account" ng-cloak>
     <div id="custom-bootstrap-menu" class="navbar navbar-default top-navbar" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -76,7 +76,9 @@
     <script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="~/all.js"></script>
-    <script src="~/scripts/changeActiveNavTab.js"></script> 
+    <script src="~/scripts/changeActiveNavTab.js"></script>
+    <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+    <script src="~/scripts/angular_filepicker.js"></script>
 
 </body>
 </html>

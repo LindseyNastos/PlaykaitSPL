@@ -1,10 +1,12 @@
 namespace PlaykaitSPL {
 
-    angular.module('PlaykaitSPL', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('PlaykaitSPL', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        filepickerProvider
     ) => {
+        filepickerProvider.setKey('AzIVhzPQ1q4P90T0CcRDgz');
         // Define routes
         $stateProvider
             .state('home', {
@@ -35,12 +37,6 @@ namespace PlaykaitSPL {
                 url: '/edit-bill/:id',
                 templateUrl: '/ngApp/views/bills/editBill.html',
                 controller: PlaykaitSPL.Controllers.EditBillController,
-                controllerAs: 'vm'
-            })
-            .state('delete-bill', {
-                url: '/delete-bill/:id',
-                templateUrl: '/ngApp/views/bills/deleteBill.html',
-                controller: PlaykaitSPL.Controllers.DeleteBillController,
                 controllerAs: 'vm'
             })
             .state('expenses', {
