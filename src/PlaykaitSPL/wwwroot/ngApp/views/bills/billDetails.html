@@ -1,25 +1,35 @@
 ﻿<div class="row">
     <div class="col-sm-12">
         <div class="heading-div">
-            <a href="/bills" class="pull-left btn btn-warning">All Bills</a>
+            <a href="/bills" class="btn btn-warning">All Bills</a>
             {{vm.bill.billName.name}}
         </div>
         <hr />
     </div>
 </div>
-<div class="add-form">
-    <p><strong>Amount:</strong> {{vm.bill.amount | currency}}</p>
-    <span ng-show="!bill.paid">
-        <p>
-            <strong style="color:#d9534f;">Not Paid</strong> <br />
-        </p>
-    </span>
-    <span ng-show="vm.bill.paid"><p><strong>Date Paid:</strong> {{vm.bill.datePaid | date:'fullDate'}}</p></span>
-    <p><strong>Notes:</strong> {{vm.bill.notes}}</p>
-    <!--Add in scanned image here-->
-    <div>
-        <a class="btn btn-sm btn-default" href="edit-bill/{{vm.bill.id}}"><i class="fa fa-pencil" aria-hidden="true"></i>  Edit</a>  
-        <button ng-click="vm.showDeleteModal()" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+<div class="row">
+    <div class="col-sm-12 center-detail-div">
+        <div class="card text-xs-center ">
+            <div style="border-radius:0px;" class="card-header default-color-dark white-text">
+                <p>{{vm.bill.amount | currency}}</p>
+            </div>
+            <div class="card-block">
+                <span ng-show="!bill.paid">
+                    <p>
+                        <strong style="color:#d9534f;">Not Paid</strong> <br />
+                    </p>
+                </span>
+                <span ng-show="vm.bill.paid"><p><strong>Date Paid:</strong> {{vm.bill.datePaid | date:'fullDate'}}</p></span>
+                <p><strong>Notes:</strong> {{vm.bill.notes}}</p>
+                <img ng-src="{{vm.bill.scannedImage}}" />
+                <!--Add in scanned image here-->
+            </div>
+            <div class="card-footer text-muted default-color-dark white-text">
+                <div class="list-buttons-div">
+                    <a class="btn btn-sm btn-default" href="edit-bill/{{vm.bill.id}}"><i class="fa fa-pencil" aria-hidden="true"></i>  Edit</a>
+                    <button ng-click="vm.showDeleteModal()" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
-   
 </div>

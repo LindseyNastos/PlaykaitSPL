@@ -1,13 +1,14 @@
 ﻿<div class="row">
     <div class="col-sm-12">
         <div class="heading-div">
+            <a href="/bills" class="btn btn-warning">All Bills</a>
             Edit your bill
         </div>
         <hr />
     </div>
 </div>
 
-<form class="add-form" ng-submit="vm.editBill()">
+<form class="add-form">
     <div class="form-group">
         <label>
             Bill Name
@@ -42,12 +43,16 @@
         </label>
     </div>
     <div class="form-group">
-        <label>
-            Has Been Paid
-            <br />
-            <input ng-model="vm.bill.paid" type="radio" name="paid" value="true"/> Yes
-            <input ng-model="vm.bill.paid" type="radio" name="paid" value="false"/> No
-        </label>
+        <label>Has Been Paid</label>
+        <br />
+        <div>
+            <input ng-click="vm.toggleDatePopup()" ng-model="vm.isPaid" type="radio" name="paid" value="false" /> <span style="margin-right:10px;">No</span>
+            <input ng-click="vm.toggleDatePopup()" ng-model="vm.isPaid" type="radio" name="paid" value="true" /> Yes (choose a date)
+            <p style="display:none" id="datePopup" class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dt" is-open="vm.popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+            </p>
+        </div>
     </div>
     <!--shows when "Has Been Paid" is true-->
     <!--<div class="form-group">
@@ -66,10 +71,14 @@
 
     <!--This one doesn't work yet-->
     <div class="form-group">
-        <label>
-            Image
-            <input type="text" placeholder="Image" class="form-control" />
-        </label>
+        <label>Image</label>
+        <br />
+        <button name="rofl" class="btn btn-default" ng-click="vm.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
+
+        <h2>{{vm.file.filename}}</h2>
+        <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />
+
     </div>
-    <input class="btn btn-success" type="submit" value="Save" />
+    <hr />
+    <input ng-click="vm.editBill()" class="btn btn-info" type="button" value="Save" />
 </form>

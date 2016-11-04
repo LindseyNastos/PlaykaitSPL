@@ -64,6 +64,7 @@ textarea {
 #custom-bootstrap-menu.navbar-default .navbar-brand {
     color: rgba(255, 255, 255, 0.98);
     padding-top: 13px;
+    padding-left: 20px;
 }
 
 #custom-bootstrap-menu.navbar-default {
@@ -119,7 +120,7 @@ textarea {
 .panel {
     border-radius: 0px;
     border: none;
-    opacity: 0.9;
+    opacity: 0.98;
 }
 
 .panel-footer {
@@ -134,7 +135,7 @@ textarea {
     border-radius: 0px;
     padding: 15px;
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.92;
     display: inline-block;
     margin: 5px;
     width: 322px;
@@ -177,7 +178,7 @@ textarea {
 @media (min-width: 768px) {
     .sidebar-nav {
         background-color: rgba(62, 90, 122, 1);
-        opacity: 0.9;
+        /*opacity: 0.98;*/
         padding: 0px;
         border-radius: 0px;
         margin-top: 3px;
@@ -188,7 +189,7 @@ textarea {
             padding: 0;
             max-height: none;
             background-color: rgba(62, 90, 122, 1);
-            opacity: 0.9;
+            /*opacity: 0.98;*/
             padding: 0px;
             border-radius: 0px;
         }
@@ -236,11 +237,11 @@ textarea {
 
 .add-form {
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.92;
     padding: 25px;
     max-width: 600px;
     margin: 0 auto;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
     .add-form label {
@@ -257,30 +258,40 @@ textarea {
 }
 
 .heading-div {
-    text-align:center;
+    text-align: center;
     font-size: 40px;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    position: relative;
 }
+
+    .heading-div a {
+        position: absolute;
+        left: 0;
+    }
 
 .no-accordion-deco, .no-accordion-deco:hover, .no-accordion-deco:after, .no-accordion-deco:visited {
     text-decoration: none;
 }
 
 .month-btn {
-    margin:1px;
-    width:45px;
+    margin: 1px;
+    width: 45px;
 }
 
 .bill-btn {
-    margin:2px;
-    width:100%;
+    margin: 2px;
+    width: 100%;
 }
 
 .all-months {
-    width:120px;
+    width: 120px;
     margin: 0 auto;
 }
 
 .accordion-filter {
-    padding-bottom:0px;
+    padding-bottom: 0px;
+}
+
+.center-detail-div {
+    text-align: center;
 }

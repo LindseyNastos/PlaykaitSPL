@@ -39,8 +39,7 @@
                 this.newBill.datePaid = this.dt;
                 this.newBill.paid = true;
             }
-            debugger;
-            this.newBill.scannedImage = this.file;
+            this.newBill.scannedImage = this.file.url;
             this.billService.saveBill(this.newBill).then((data) => {
                 this.$state.go("bill-details", { id: data.id });
             });
@@ -54,13 +53,12 @@
 
         //Filepicker methods
         public pickFile() {
-            debugger;
             this.filepickerService.pick(
                 { mimetype: 'image/*' },
                 this.fileUploaded.bind(this)
             );
         }
-
+ 
         public fileUploaded(file) {
             // save file url to database
             this.file = file;

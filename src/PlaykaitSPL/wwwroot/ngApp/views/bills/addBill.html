@@ -1,12 +1,13 @@
 ﻿<div class="row">
     <div class="col-sm-12">
         <div class="heading-div">
+            <a href="/bills" class="btn btn-warning">All Bills</a>
             Add a new bill
         </div>
         <hr />
     </div>
 </div>
-<form class="add-form" ng-submit="vm.addBill()">
+<form class="add-form">
     <div class="form-group">
         <label>
             Bill Name
@@ -70,5 +71,5 @@
         
     </div>
     <hr />
-    <input class="btn btn-info" type="submit" value="Save" />
+    <input ng-click="vm.addBill()" class="btn btn-info" type="button" value="Save" />
 </form>

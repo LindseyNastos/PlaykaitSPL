@@ -45,7 +45,8 @@
             return this.BillResource.get({ id: id }).$promise;
         }
 
-        public saveBill(bill:PlaykaitSPL.Interfaces.ICabinBill) {
+        public saveBill(bill: PlaykaitSPL.Interfaces.ICabinBill) {
+            debugger;
             return this.BillResource.save(bill).$promise;
         }
 
