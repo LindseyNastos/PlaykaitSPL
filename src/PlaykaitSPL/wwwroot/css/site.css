@@ -295,3 +295,11 @@ textarea {
 .center-detail-div {
     text-align: center;
 }
+
+.ng-invalid.ng-touched {
+            background-color: #FFECE7;
+}
+
+.error {
+            color:darkred;
+        }

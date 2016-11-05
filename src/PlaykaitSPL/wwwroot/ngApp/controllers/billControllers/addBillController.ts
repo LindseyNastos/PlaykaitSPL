@@ -39,7 +39,9 @@
                 this.newBill.datePaid = this.dt;
                 this.newBill.paid = true;
             }
-            this.newBill.scannedImage = this.file.url;
+            if (this.file) {
+                this.newBill.scannedImage = this.file.url;
+            }
             this.billService.saveBill(this.newBill).then((data) => {
                 this.$state.go("bill-details", { id: data.id });
             });

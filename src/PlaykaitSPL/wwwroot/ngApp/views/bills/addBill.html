@@ -7,25 +7,32 @@
         <hr />
     </div>
 </div>
-<form class="add-form">
+
+<form name="add_bill" novalidate class="add-form">
     <div class="form-group">
         <label>
             Bill Name
-            <select ng-model="vm.newBill.billName.id" class="form-control">
+            <select name="billName" required ng-model="vm.newBill.billName.id" class="form-control">
                 <option ng-repeat="n in vm.billNames" ng-value="n.id">{{n.name}}</option>
             </select>
         </label>
+        <span ng-show="add_bill.billName.$touched && add_bill.billName.$error.required" class="error">
+            Bill name is required.
+        </span>
     </div>
     <div class="form-group">
         <label>
             Amount
-            <input ng-model="vm.newBill.amount" type="text" placeholder="Amount" class="form-control" />
+            <input name="amount" ng-trim="true" required ng-model="vm.newBill.amount" type="text" placeholder="Amount" class="form-control" />
         </label>
+        <span ng-show="add_bill.amount.$touched && add_bill.amount.$error.required" class="error">
+            Amount is required.
+        </span>
     </div>
     <div class="form-group">
         <label>
             Month
-            <select ng-model="vm.newBill.monthNum" class="form-control">
+            <select name="month" required ng-model="vm.newBill.monthNum" class="form-control">
                 <option ng-value="1">January</option>
                 <option ng-value="2">February</option>
                 <option ng-value="3">March</option>
@@ -40,7 +47,11 @@
                 <option ng-value="12">December</option>
             </select>
         </label>
+        <span ng-show="add_bill.month.$touched && add_bill.month.$error.required" class="error">
+            Month is required.
+        </span>
     </div>
+
     <div class="form-group">
         <label>Has Been Paid</label>
         <br />
@@ -56,15 +67,14 @@
     <div class="form-group">
         <label>
             Notes
-            <input ng-model="vm.newBill.notes" type="text" placeholder="Notes" class="form-control" />
+            <input name="notes" ng-trim="true" ng-model="vm.newBill.notes" type="text" placeholder="Notes" class="form-control" />
         </label>
     </div>
 
-    <!--This one doesn't work yet-->
     <div class="form-group">
         <label>Image</label>
         <br />
-            <button class="btn btn-default" ng-click="vm.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
+            <button name="image" class="btn btn-default" ng-click="vm.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
 
             <h2>{{vm.file.filename}}</h2>
             <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />
