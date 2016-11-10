@@ -1,11 +1,12 @@
 ﻿<div class="modal-header">
-    <h3 class="modal-title">Are you sure you want to delete this bill?</h3>
+    <h4 class="modal-title">Are you sure you want to delete this bill?</h4>
 </div>
 <div class="modal-body">
-    <div style="padding:20px">
-        <h3>{{modal.billName}}</h3>
+    <div style="padding:10px; text-align:center">
+        <h2>{{modal.billName}}</h2>
+        <br />
         <p><strong>Amount:</strong> {{modal.amount | currency}}</p>
-        <p ng-show="!modal.datePaid" style="color:#d9534f">Not Paid</p>
+        <p ng-show="!modal.datePaid" style="color:#d9534f"><strong>Not Paid</strong></p>
         <p ng-show="modal.datePaid"><strong>Date paid:</strong> {{modal.datePaid | date: 'fullDate' }}</p>
     </div>
 </div>

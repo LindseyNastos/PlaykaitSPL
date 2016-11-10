@@ -9,77 +9,81 @@
 </div>
 
 <form name="add_bill" novalidate class="add-form">
-    <div class="form-group">
-        <label>
-            Bill Name
-            <select name="billName" required ng-model="vm.newBill.billName.id" class="form-control">
-                <option ng-repeat="n in vm.billNames" ng-value="n.id">{{n.name}}</option>
-            </select>
-        </label>
-        <span ng-show="add_bill.billName.$touched && add_bill.billName.$error.required" class="error">
-            Bill name is required.
-        </span>
-    </div>
-    <div class="form-group">
-        <label>
-            Amount
-            <input name="amount" ng-trim="true" required ng-model="vm.newBill.amount" type="text" placeholder="Amount" class="form-control" />
-        </label>
-        <span ng-show="add_bill.amount.$touched && add_bill.amount.$error.required" class="error">
-            Amount is required.
-        </span>
-    </div>
-    <div class="form-group">
-        <label>
-            Month
-            <select name="month" required ng-model="vm.newBill.monthNum" class="form-control">
-                <option ng-value="1">January</option>
-                <option ng-value="2">February</option>
-                <option ng-value="3">March</option>
-                <option ng-value="4">April</option>
-                <option ng-value="5">May</option>
-                <option ng-value="6">June</option>
-                <option ng-value="7">July</option>
-                <option ng-value="8">August</option>
-                <option ng-value="9">September</option>
-                <option ng-value="10">October</option>
-                <option ng-value="11">November</option>
-                <option ng-value="12">December</option>
-            </select>
-        </label>
-        <span ng-show="add_bill.month.$touched && add_bill.month.$error.required" class="error">
-            Month is required.
-        </span>
-    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label>
+                    Bill Name
+                    <select name="billName" required ng-model="vm.newBill.billName.id" class="form-control">
+                        <option ng-repeat="n in vm.billNames" ng-value="n.id">{{n.name}}</option>
+                    </select>
+                </label>
+                <span ng-show="add_bill.billName.$touched && add_bill.billName.$error.required" class="error">
+                    Bill name is required.
+                </span>
+            </div>
+            <div class="form-group">
+                <label>
+                    Amount
+                    <input name="amount" ng-trim="true" required ng-model="vm.newBill.amount" type="text" placeholder="Amount" class="form-control" />
+                </label>
+                <span ng-show="add_bill.amount.$touched && add_bill.amount.$error.required" class="error">
+                    Amount is required.
+                </span>
+            </div>
+            <div class="form-group">
+                <label>
+                    Month
+                    <select name="month" required ng-model="vm.newBill.monthNum" class="form-control">
+                        <option ng-value="1">January</option>
+                        <option ng-value="2">February</option>
+                        <option ng-value="3">March</option>
+                        <option ng-value="4">April</option>
+                        <option ng-value="5">May</option>
+                        <option ng-value="6">June</option>
+                        <option ng-value="7">July</option>
+                        <option ng-value="8">August</option>
+                        <option ng-value="9">September</option>
+                        <option ng-value="10">October</option>
+                        <option ng-value="11">November</option>
+                        <option ng-value="12">December</option>
+                    </select>
+                </label>
+                <span ng-show="add_bill.month.$touched && add_bill.month.$error.required" class="error">
+                    Month is required.
+                </span>
+            </div>
 
-    <div class="form-group">
-        <label>Has Been Paid</label>
-        <br />
-        <div>
-            <input ng-click="vm.toggleDatePopup()" ng-model="vm.isPaid" type="radio" name="paid" value="false" /> <span style="margin-right:10px;">No</span>
-            <input ng-click="vm.toggleDatePopup()" ng-model="vm.isPaid" type="radio" name="paid" value="true" /> Yes (choose a date)
-            <p style="display:none" id="datePopup" class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dt" is-open="vm.popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
-            </p>
+            <div class="form-group">
+                <label>Has Been Paid</label>
+                <br />
+                <div>
+                    <input ng-click="vm.toggleDatePopup()" ng-model="vm.isPaid" type="radio" name="paid" value="false" /> <span style="margin-right:10px;">No</span>
+                    <input ng-click="vm.toggleDatePopup()" ng-model="vm.isPaid" type="radio" name="paid" value="true" /> Yes (choose a date)
+                    <p style="display:none" id="datePopup" class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dt" is-open="vm.popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    Notes
+                    <input name="notes" ng-trim="true" ng-model="vm.newBill.notes" type="text" placeholder="Notes" class="form-control" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Image</label>
+                <br />
+                <button name="image" class="btn btn-default" ng-click="vm.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
+
+                <h2>{{vm.file.filename}}</h2>
+                <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />
+
+            </div>
+            <hr />
+            <input ng-click="vm.addBill()" class="btn btn-info pull-right" type="button" value="Save New Bill" />
         </div>
     </div>
-    <div class="form-group">
-        <label>
-            Notes
-            <input name="notes" ng-trim="true" ng-model="vm.newBill.notes" type="text" placeholder="Notes" class="form-control" />
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label>Image</label>
-        <br />
-            <button name="image" class="btn btn-default" ng-click="vm.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
-
-            <h2>{{vm.file.filename}}</h2>
-            <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />
-        
-    </div>
-    <hr />
-    <input ng-click="vm.addBill()" class="btn btn-info" type="button" value="Save" />
 </form>

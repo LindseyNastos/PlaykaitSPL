@@ -236,8 +236,8 @@ textarea {
 }
 
 .add-form {
-    background-color: white;
-    opacity: 0.92;
+    background:rgba(255,255,255, 0.9);
+    /*opacity: 0.92;*/
     padding: 25px;
     max-width: 600px;
     margin: 0 auto;

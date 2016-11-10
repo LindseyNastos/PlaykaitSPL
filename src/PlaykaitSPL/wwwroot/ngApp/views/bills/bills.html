@@ -50,6 +50,7 @@
                                                 <button ng-click="vm.billsByMonth(12)" class="btn btn-sm btn-default month-btn">Dec</button>
                                             </div>
                                         </div>
+                                        <button style="margin-top:3px" ng-click="vm.getBills()" class="btn btn-default bill-btn">All</button>
                                     </div>
                                 </uib-accordion>
                             </a>
@@ -61,6 +62,7 @@
                                         <div ng-repeat="name in vm.billNames">
                                             <button ng-click="vm.billsByBillName(name.id)" class="btn btn-default bill-btn">{{name.name}}</button>
                                         </div>
+                                        <button ng-click="vm.getBills()" class="btn btn-default bill-btn">All</button>
                                     </div>
                                 </uib-accordion>
                             </a>
@@ -75,6 +77,7 @@
                                             Max: <input type="number" ng-model="vm.priceMax"/>
                                         </p>
                                         <button ng-click="vm.billsByPrice()" class="btn btn-default bill-btn">Filter</button>
+                                        <button ng-click="vm.getBills()" class="btn btn-default bill-btn">All</button>
                                     </div>
                                 </uib-accordion>
                             </a>

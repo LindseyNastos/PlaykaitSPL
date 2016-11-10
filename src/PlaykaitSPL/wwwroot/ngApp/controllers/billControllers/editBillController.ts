@@ -3,6 +3,8 @@
     export class EditBillController {
         public bill: PlaykaitSPL.Interfaces.ICabinBill;
         public billNames;
+        public monthNames = [];
+        public selectedMonth;
         public isPaid;
         public file;
         public formats: string[] = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -31,8 +33,15 @@
             private $scope: ng.IScope) {
             this.getBill();
             this.getBillNames();
-            this.today();
+            //this.today();
             this.toggleMin();
+            this.monthDropdown();
+        }
+
+        public monthDropdown() {
+            for (let m = 0; m < 12; m++) {
+                this.monthNames.push(PlaykaitSPL.Interfaces.MonthEnum[m]);
+            }
         }
 
         public getBillNames() {
@@ -44,16 +53,44 @@
         public getBill() {
             this.billService.getBill(this.$stateParams['id']).then((data) => {
                 this.bill = data;
+                this.selectedMonth = PlaykaitSPL.Interfaces.MonthEnum[this.bill.monthNum - 1];
+                this.billCheck();
+                this.today();
             });
         }
 
+        public trimDate() {
+            var date = this.bill.datePaid;
+            var dateTrim = date.substring(0, 10);
+            var newDate = new Date(dateTrim);
+            return newDate;
+        }
+
+        public billCheck() {
+            if (this.bill.paid == true) {
+                this.isPaid = "true";
+                this.dt = this.trimDate();
+                let showDate = <HTMLInputElement>document.getElementById('datePopup');
+                showDate.style.display = "";
+            } else {
+                this.isPaid = "false";
+            }
+        }
+
         public editBill() {
-            if (this.isPaid == "true") {
+            if (this.bill.paid == true) {
                 this.bill.datePaid = this.dt;
-                this.bill.paid = true;
             }
             if (this.file) {
                 this.bill.scannedImage = this.file.url;
+            }
+            for (let m in PlaykaitSPL.Interfaces.MonthEnum) {
+                for (let m = 0; m < Object.keys(PlaykaitSPL.Interfaces.MonthEnum).length; m++) {
+                    if (PlaykaitSPL.Interfaces.MonthEnum[m] == this.selectedMonth) {
+                        this.bill.monthNum = m + 1;
+                        console.log(this.bill.monthNum);
+                    }
+                }
             }
             this.billService.saveBill(this.bill).then((data) => {
                 this.$state.go("bill-details", { id: data.id });
@@ -87,7 +124,9 @@
         };
 
         public today() {
-            this.dt = new Date();
+            if (!this.dt) {
+                this.dt = new Date();
+            }
         };
 
         public clear() {
