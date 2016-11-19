@@ -2,6 +2,7 @@
 
     export class AddExpenseController {
         public newExpense: PlaykaitSPL.Interfaces.ICabinExpense;
+        public validationErrors;
         public expenseTypes;
         public file;
         public formats: string[] = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -39,6 +40,14 @@
             }
             this.expenseService.saveExpense(this.newExpense).then((data) => {
                 this.$state.go("expense-details", { id: data.id });
+            }).catch((err) => {
+                // flatten errors
+                let validationErrors = [];
+                for (let prop in err.data) {
+                    let propErrors = err.data[prop];
+                    validationErrors = validationErrors.concat(propErrors);
+                }
+                this.validationErrors = validationErrors;
             });
         }
 

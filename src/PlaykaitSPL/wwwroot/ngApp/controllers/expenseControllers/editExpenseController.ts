@@ -3,6 +3,7 @@
     export class EditExpenseController {
         public expense: PlaykaitSPL.Interfaces.ICabinExpense;
         public expenseTypes: PlaykaitSPL.Interfaces.IExpenseType[];
+        public validationErrors;
         public selectedMonth;
         public isPaid;
         public file;
@@ -57,7 +58,15 @@
                 }
                 this.expenseService.saveExpense(this.expense).then((data) => {
                 this.$state.go("expense-details", { id: data.id });
-            });
+                }).catch((err) => {
+                    // flatten errors
+                    let validationErrors = [];
+                    for (let prop in err.data) {
+                        let propErrors = err.data[prop];
+                        validationErrors = validationErrors.concat(propErrors);
+                    }
+                    this.validationErrors = validationErrors;
+                });
         }
 
         public getExpenseTypes() {

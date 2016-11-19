@@ -11,6 +11,9 @@
 <form name="add_bill" novalidate class="add-form">
     <div class="row">
         <div class="col-sm-12">
+            <ul class="pull-right">
+                <li class="error" ng-repeat="err in vm.validationErrors">{{err}}</li>
+            </ul>
             <div class="form-group">
                 <label>
                     Bill Name

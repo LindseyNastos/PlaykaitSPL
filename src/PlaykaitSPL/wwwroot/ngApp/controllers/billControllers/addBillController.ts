@@ -2,6 +2,7 @@
 
     export class AddBillController {
         public newBill: PlaykaitSPL.Interfaces.ICabinBill;
+        public validationErrors;
         public billNames;
         public isPaid;
         public file;
@@ -43,7 +44,15 @@
                 this.newBill.scannedImage = this.file.url;
             }
             this.billService.saveBill(this.newBill).then((data) => {
-                this.$state.go("bill-details", { id: data.id });
+                this.$state.go("bill-details", { id: data.id })
+            }).catch((err) => {
+                // flatten errors
+                let validationErrors = [];
+                for (let prop in err.data) {
+                    let propErrors = err.data[prop];
+                    validationErrors = validationErrors.concat(propErrors);
+                }
+                this.validationErrors = validationErrors;
             });
         }
 

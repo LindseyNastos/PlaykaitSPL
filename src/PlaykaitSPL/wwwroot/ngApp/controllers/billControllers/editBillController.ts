@@ -3,6 +3,7 @@
     export class EditBillController {
         public bill: PlaykaitSPL.Interfaces.ICabinBill;
         public billNames: PlaykaitSPL.Interfaces.IBillName[];
+        public validationErrors;
         public monthNames = [];
         public selectedMonth;
         public isPaid;
@@ -93,7 +94,15 @@
                 }
             }
             this.billService.saveBill(this.bill).then((data) => {
-                this.$state.go("bill-details", { id: data.id });
+                this.$state.go("bill-details", { id: data.id }).catch((err) => {
+                    // flatten errors
+                    let validationErrors = [];
+                    for (let prop in err.data) {
+                        let propErrors = err.data[prop];
+                        validationErrors = validationErrors.concat(propErrors);
+                    }
+                    this.validationErrors = validationErrors;
+                });
             });
         }
 
