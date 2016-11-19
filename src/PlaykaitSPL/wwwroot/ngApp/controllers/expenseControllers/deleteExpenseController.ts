@@ -1,20 +1,26 @@
 ﻿namespace PlaykaitSPL.Controllers {
 
-    export class ExpenseDeleteController {
+    export class DeleteExpenseController {
         public expense: PlaykaitSPL.Interfaces.ICabinExpense;
-        constructor(private expenseService: PlaykaitSPL.Services.ExpenseService, private $stateParams: ng.ui.IStateParamsService) {
-            this.getExpense();
+        constructor(public id,
+            public expenseName,
+            public expenseType,
+            public amount,
+            public datePurchased,
+            private expenseService: PlaykaitSPL.Services.ExpenseService,
+            private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance,
+            private $state: ng.ui.IStateService) {
         }
 
-        public getExpense() {
-            this.expenseService.getExpense(this.$stateParams['id']).then((data) => {
-                this.expense = data;
+        public confirmDelete() {
+            this.expenseService.deleteExpense(this.id).then(() => {
+                this.$uibModalInstance.close();
+                this.$state.go('expenses', {}, { reload: true });
             });
         }
 
-        public deleteBill() {
-            this.expenseService.deleteExpense(this.expense.id).then(() => { });
+        public dismissModal() {
+            this.$uibModalInstance.close();
         }
     }
-
 }

@@ -24,6 +24,11 @@ namespace PlaykaitSPL.Services
                 .Include(b => b.BillName)
                 .OrderByDescending(b => b.DateEntered)
                 .ToList();
+            //foreach (var bill in bills) {
+            //    if (bill.DatePaid.HasValue) {
+            //        var date = bill.DatePaid.Value; 
+            //    }
+            //}
             return bills;
         }
 
@@ -39,10 +44,31 @@ namespace PlaykaitSPL.Services
             bill.BillName = billName;
             bill.DateEntered = DateTime.Now;
             _repo.Add(bill);
+
+            var month = _repo.Query<Month>()
+                .Where(m => m.Year == bill.Year)
+                .Where(m => m.MonthNum == bill.MonthNum)
+                .FirstOrDefault();
+            if (month == null)
+            {
+                var newMonth = new Month()
+                {
+                    MonthNum = bill.MonthNum,
+                    Year = bill.Year
+                };
+                _repo.Add(newMonth);
+                newMonth.CabinBills.Add(bill);
+            }
+            else {
+                month.CabinBills.Add(bill);
+            }
+            _repo.SaveChanges();
         }
 
         public void EditBill(CabinBill bill)
         {
+            var billName = _repo.Query<BillName>().FirstOrDefault(e => e.Id == bill.BillName.Id);
+            bill.BillName = billName;
             _repo.Update(bill);
         }
 

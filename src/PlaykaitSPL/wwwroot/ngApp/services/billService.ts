@@ -46,7 +46,6 @@
         }
 
         public saveBill(bill: PlaykaitSPL.Interfaces.ICabinBill) {
-            debugger;
             return this.BillResource.save(bill).$promise;
         }
 

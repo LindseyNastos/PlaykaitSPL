@@ -111,6 +111,7 @@ namespace PlaykaitSPL.Data
                         BillName = db.BillNames.FirstOrDefault(n => n.Name == "Electricity"),
                         Amount = 78.04m,
                         MonthNum = 9,
+                        Year = 2016,
                         DateEntered = new DateTime(2016, 8, 29),
                         Paid = false,
                         Notes = "Note: electricity",
@@ -120,6 +121,7 @@ namespace PlaykaitSPL.Data
                         BillName = db.BillNames.FirstOrDefault(n => n.Name == "Water"),
                         Amount = 153.97m,
                         MonthNum = 10,
+                        Year = 2016,
                         DateEntered = new DateTime(2016, 8, 15),
                         DatePaid = new DateTime(2016, 10, 04),
                         Paid = true,
@@ -130,6 +132,7 @@ namespace PlaykaitSPL.Data
                         BillName = db.BillNames.FirstOrDefault(n => n.Name == "Gas"),
                         Amount = 36.44m,
                         MonthNum = 9,
+                        Year = 2016,
                         DateEntered = new DateTime(2016, 9, 29),
                         Paid = false,
                         Notes = "Note: gas",
@@ -176,8 +179,8 @@ namespace PlaykaitSPL.Data
             if (!db.Months.Any()) {
                 db.Months.AddRange(
                     new Month {
-                        MonthName = Month.Months.August,
                         Year = 2016,
+                        MonthNum = 8,
                         CabinExpenses = new List<CabinExpense>() {
                             db.CabinExpenses.FirstOrDefault(c => c.ExpenseName == "Laundry deturgent")
                         },
@@ -185,7 +188,7 @@ namespace PlaykaitSPL.Data
                     },
                     new Month
                     {
-                        MonthName = Month.Months.September,
+                        MonthNum = 9,
                         Year = 2016,
                         CabinExpenses = new List<CabinExpense>() {
                             db.CabinExpenses.FirstOrDefault(c => c.ExpenseName == "Cat food"),
@@ -198,7 +201,7 @@ namespace PlaykaitSPL.Data
                     },
                     new Month
                     {
-                        MonthName = Month.Months.October,
+                        MonthNum = 10,
                         Year = 2016,
                         CabinBills = new List<CabinBill>()
                         {

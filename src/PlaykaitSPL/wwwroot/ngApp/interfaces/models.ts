@@ -7,6 +7,7 @@
         datePaid: any; // or number????
         paid: boolean;
         monthNum: number;
+        year: number;
         scannedImage: string;
         notes: string;
     }

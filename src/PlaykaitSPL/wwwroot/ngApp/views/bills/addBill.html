@@ -55,6 +55,21 @@
             </div>
 
             <div class="form-group">
+                <label>
+                    Year
+                    <select name="year" required ng-model="vm.newBill.year" class="form-control">
+                        <option ng-value="2015">2015</option>
+                        <option ng-value="2016">2016</option>
+                        <option ng-value="2017">2017</option>
+                        <option ng-value="2018">2018</option>
+                    </select>
+                </label>
+                <span ng-show="add_bill.year.$touched && add_bill.year.$error.required" class="error">
+                    Year is required.
+                </span>
+            </div>
+
+            <div class="form-group">
                 <label>Has Been Paid</label>
                 <br />
                 <div>
@@ -83,7 +98,7 @@
 
             </div>
             <hr />
-            <input ng-click="vm.addBill()" class="btn btn-info pull-right" type="button" value="Save New Bill" />
+            <input ng-click="vm.addBill()" class="btn btn-info pull-right" type="button" value="Save New Bill" ng-disabled="!add_bill.$valid"/>
         </div>
     </div>
 </form>

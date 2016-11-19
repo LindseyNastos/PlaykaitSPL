@@ -66,7 +66,7 @@ namespace PlaykaitSPL {
             .state('delete-expense', {
                 url: '/delete-expense/:id',
                 templateUrl: '/ngApp/views/expenses/deleteExpense.html',
-                controller: PlaykaitSPL.Controllers.ExpenseDeleteController,
+                controller: PlaykaitSPL.Controllers.DeleteExpenseController,
                 controllerAs: 'vm'
             })
             .state('login', {

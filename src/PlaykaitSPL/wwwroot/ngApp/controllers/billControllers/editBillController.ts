@@ -2,7 +2,7 @@
 
     export class EditBillController {
         public bill: PlaykaitSPL.Interfaces.ICabinBill;
-        public billNames;
+        public billNames: PlaykaitSPL.Interfaces.IBillName[];
         public monthNames = [];
         public selectedMonth;
         public isPaid;
@@ -33,7 +33,7 @@
             private $scope: ng.IScope) {
             this.getBill();
             this.getBillNames();
-            //this.today();
+            this.today();
             this.toggleMin();
             this.monthDropdown();
         }
@@ -78,8 +78,9 @@
         }
 
         public editBill() {
-            if (this.bill.paid == true) {
+            if (this.isPaid == "true") {
                 this.bill.datePaid = this.dt;
+                this.bill.paid = true;
             }
             if (this.file) {
                 this.bill.scannedImage = this.file.url;
@@ -88,7 +89,6 @@
                 for (let m = 0; m < Object.keys(PlaykaitSPL.Interfaces.MonthEnum).length; m++) {
                     if (PlaykaitSPL.Interfaces.MonthEnum[m] == this.selectedMonth) {
                         this.bill.monthNum = m + 1;
-                        console.log(this.bill.monthNum);
                     }
                 }
             }

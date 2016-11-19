@@ -4,19 +4,19 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PlaykaitSPL.Migrations
 {
-    public partial class monthNum : Migration
+    public partial class expenseUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "MonthNum",
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DateEntered",
                 table: "CabinExpenses",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<int>(
-                name: "MonthNum",
-                table: "CabinBills",
+                name: "Year",
+                table: "CabinExpenses",
                 nullable: false,
                 defaultValue: 0);
         }
@@ -24,12 +24,12 @@ namespace PlaykaitSPL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "MonthNum",
+                name: "DateEntered",
                 table: "CabinExpenses");
 
             migrationBuilder.DropColumn(
-                name: "MonthNum",
-                table: "CabinBills");
+                name: "Year",
+                table: "CabinExpenses");
         }
     }
 }

@@ -48,15 +48,10 @@ namespace PlaykaitSPL.API
                 else
                 {
                     _service.EditExpense(exp);
+                    return Ok(exp);
                 }
             }
             return BadRequest(ModelState);
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
         }
 
         // DELETE api/values/5
@@ -64,6 +59,43 @@ namespace PlaykaitSPL.API
         public void Delete(int id)
         {
             _service.SoftDeleteExpense(id);
+        }
+
+        // FILTERS
+
+        [HttpGet("ExpensesByMonth/{monthNum}")]
+        public IActionResult ExpensesByMonth(int monthNum)
+        {
+            var expenses = _service.ExpensesByMonth(monthNum);
+            return Ok(expenses);
+        }
+
+        [HttpGet("ExpensesByType/{expenseTypeId}")]
+        public IActionResult ExpensesByType(int expenseTypeId)
+        {
+            var expenses = _service.ExpensesByType(expenseTypeId);
+            return Ok(expenses);
+        }
+
+        [HttpGet("DeletedExpenses")]
+        public IActionResult DeletedExpenses()
+        {
+            var expenses = _service.DeletedExpenses();
+            return Ok(expenses);
+        }
+
+        [HttpGet("RestoreDeletedExpense/{id}")]
+        public IActionResult RestoreDeletedExpense(int id)
+        {
+            var exp = _service.RestoreDeletedExpense(id);
+            return Ok(exp);
+        }
+
+        [HttpGet("ExpensesByPrice/{min}/{max}")]
+        public IActionResult ExpensesByPrice(int min, int max)
+        {
+            var expenses = _service.ExpensesByPrice(min, max);
+            return Ok(expenses);
         }
     }
 }

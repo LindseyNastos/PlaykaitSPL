@@ -73,7 +73,7 @@
 
             </div>
             <hr />
-                <input ng-click="vm.editBill()" class="btn btn-info pull-right" type="button" value="Save Changes" />
+                <input ng-click="vm.editBill()" class="btn btn-info pull-right" type="button" value="Save Changes" ng-disabled="!edit_bill.$valid"/>
         </div>
     </div>
 </form>

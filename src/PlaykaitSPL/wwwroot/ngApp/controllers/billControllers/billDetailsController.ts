@@ -1,11 +1,12 @@
 ﻿namespace PlaykaitSPL.Controllers {
-
     export class BillDetailsController {
         public bill: PlaykaitSPL.Interfaces.ICabinBill;
 
-        constructor(private billService: PlaykaitSPL.Services.BillService, private $stateParams: ng.ui.IStateParamsService, private $uibModal: angular.ui.bootstrap.IModalService) {
+        constructor(private billService: PlaykaitSPL.Services.BillService,
+            private $stateParams: ng.ui.IStateParamsService,
+            private $uibModal: angular.ui.bootstrap.IModalService) {
             this.getBill();
-            }
+        }
 
         public getBill() {
             this.billService.getBill(this.$stateParams['id']).then((data) => {

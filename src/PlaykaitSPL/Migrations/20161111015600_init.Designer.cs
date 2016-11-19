@@ -8,7 +8,7 @@ using PlaykaitSPL.Data;
 namespace PlaykaitSPL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161017052213_init")]
+    [Migration("20161111015600_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -207,11 +207,15 @@ namespace PlaykaitSPL.Migrations
 
                     b.Property<int?>("MonthId");
 
+                    b.Property<int>("MonthNum");
+
                     b.Property<string>("Notes");
 
                     b.Property<bool>("Paid");
 
                     b.Property<string>("ScannedImage");
+
+                    b.Property<int>("Year");
 
                     b.HasKey("Id");
 
@@ -238,6 +242,8 @@ namespace PlaykaitSPL.Migrations
                     b.Property<bool>("IsActive");
 
                     b.Property<int?>("MonthId");
+
+                    b.Property<int>("MonthNum");
 
                     b.Property<string>("Notes");
 
@@ -269,7 +275,9 @@ namespace PlaykaitSPL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("MonthName");
+                    b.Property<string>("MonthName");
+
+                    b.Property<int>("MonthNum");
 
                     b.Property<string>("Notes");
 

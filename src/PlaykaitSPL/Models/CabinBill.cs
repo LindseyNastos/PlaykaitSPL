@@ -17,5 +17,6 @@ namespace PlaykaitSPL.Models
         public string Notes { get; set; }
         public bool IsActive { get; set; } = true;
         public int MonthNum { get; set; }
+        public int Year { get; set; }
     }
 }

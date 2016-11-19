@@ -61,6 +61,8 @@ namespace PlaykaitSPL.API
             _service.SoftDeleteBill(id);
         }
 
+        // FILTERS
+
         [HttpGet("BillsByMonth/{monthNum}")]
         public IActionResult BillByMonth(int monthNum)
         {
@@ -97,7 +99,7 @@ namespace PlaykaitSPL.API
         }
 
         [HttpGet("BillsByPrice/{min}/{max}")]
-        public IActionResult RestoreDeletedBill(int min, int max)
+        public IActionResult BillsByPrice(int min, int max)
         {
             var bills = _service.BillsByPrice(min, max);
             return Ok(bills);

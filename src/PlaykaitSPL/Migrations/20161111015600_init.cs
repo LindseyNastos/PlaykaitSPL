@@ -97,7 +97,8 @@ namespace PlaykaitSPL.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    MonthName = table.Column<int>(nullable: false),
+                    MonthName = table.Column<string>(nullable: true),
+                    MonthNum = table.Column<int>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
                     Year = table.Column<int>(nullable: false)
                 },
@@ -204,9 +205,11 @@ namespace PlaykaitSPL.Migrations
                     DatePaid = table.Column<DateTime>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     MonthId = table.Column<int>(nullable: true),
+                    MonthNum = table.Column<int>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
                     Paid = table.Column<bool>(nullable: false),
-                    ScannedImage = table.Column<string>(nullable: true)
+                    ScannedImage = table.Column<string>(nullable: true),
+                    Year = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -237,6 +240,7 @@ namespace PlaykaitSPL.Migrations
                     ExpenseTypeId = table.Column<int>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     MonthId = table.Column<int>(nullable: true),
+                    MonthNum = table.Column<int>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
                     ScannedImage = table.Column<string>(nullable: true)
                 },

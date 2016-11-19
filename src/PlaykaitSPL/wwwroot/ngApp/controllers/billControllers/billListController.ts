@@ -1,5 +1,4 @@
 ﻿namespace PlaykaitSPL.Controllers {
-
     export class BillListController {
         public bills: PlaykaitSPL.Interfaces.ICabinBill[];
         public billNames: PlaykaitSPL.Interfaces.IBillName[];
@@ -55,7 +54,7 @@
             });
         }
 
-        //BILL FILTERS
+        // BILL FILTERS
 
         public billsByMonth(month: number) {
             this.billService.billsByMonth(month).then((data) => {

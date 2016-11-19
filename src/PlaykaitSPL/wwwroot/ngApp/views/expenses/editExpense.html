@@ -1,1 +1,74 @@
-﻿
+﻿<div class="row">
+    <div class="col-sm-12">
+        <div class="heading-div">
+            <a href="/expenses" class="btn btn-warning">All Expenses</a>
+            Edit your expense
+        </div>
+        <hr />
+    </div>
+</div>
+
+<form name="edit_expense" novalidate class="add-form">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label>
+                    Expense Name
+                    <input name="expenseName" ng-trim="true" required ng-model="vm.expense.expenseName" type="text" placeholder="Expense Name" class="form-control" />
+                </label>
+                <span ng-show="edit_expense.expenseName.$touched && edit_expense.expenseName.$error.required" class="error">
+                    Expense name is required.
+                </span>
+            </div>
+            <div class="form-group">
+                <label>
+                    Expense Type
+                    <select name="expenseType" required ng-model="vm.expense.expenseType.id" class="form-control" ng-options="e.id as e.name for e in vm.expenseTypes"></select>
+                </label>
+                <span ng-show="edit_expense.expenseType.$touched && edit_expense.expenseType.$error.required" class="error">
+                    Expense type is required.
+                </span>
+            </div>
+
+            <div>
+                <label>
+                    Amount
+                    <input name="amount" required ng-trim="true" ng-model="vm.expense.amount" type="text" placeholder="Amount" class="form-control" />
+                </label>
+                <span ng-show="edit_expense.amount.$touched && edit_expense.amount.$error.required" class="error">
+                    Amount is required.
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label>Date Purchased</label>
+                <br />
+                <div>
+                    <p id="datePopup" class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dt" is-open="vm.popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                    </p>
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <label>
+                    Notes
+                    <input name="notes" ng-trim="true" ng-model="vm.expense.notes" type="text" placeholder="Notes" class="form-control" />
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Image</label>
+                <br />
+                <button name="image" class="btn btn-default" ng-click="vm.pickFile()"><i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
+
+                <h2>{{vm.file.filename}}</h2>
+                <img ng-src="{{vm.file.url | fpConvert:{w: 400} }}" alt="{{vm.file.filename}}" />
+
+            </div>
+            <hr />
+            <input ng-click="vm.editExpense()" class="btn btn-info pull-right" type="button" value="Save Changes" ng-disabled="!edit_expense.$valid"/>
+        </div>
+    </div>
+</form>
