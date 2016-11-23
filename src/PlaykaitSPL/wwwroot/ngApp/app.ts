@@ -86,7 +86,7 @@ namespace PlaykaitSPL {
                 templateUrl: '/ngApp/views/externalRegister.html',
                 controller: PlaykaitSPL.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
-            }) 
+            })
             .state('contacts', {
                 url: '/contacts',
                 templateUrl: '/ngApp/views/people/contacts/contacts.html',
@@ -125,9 +125,21 @@ namespace PlaykaitSPL {
             })
             .state('manage', {
                 url: '/manage',
-                templateUrl: '/ngApp/views/manage.html',
-                //controller: PlaykaitSPL.Controllers.AboutController,
-                //controllerAs: 'controller'
+                templateUrl: '/ngApp/views/manage/manage.html',
+                controller: PlaykaitSPL.Controllers.ManageController,
+                controllerAs: 'vm'
+            })
+            .state('manage.billNames', {
+                url: '/manage-billNames',
+                templateUrl: '/ngApp/views/manage/billNames/listBillNamesChild.html',
+                controller: PlaykaitSPL.Controllers.BillNameListController,
+                controllerAs: 'vm'
+            })
+            .state('manage.expenseTypes', {
+                url: '/manage-expenseTypes',
+                templateUrl: '/ngApp/views/manage/expenseTypes/listExpenseTypesChild.html',
+                controller: PlaykaitSPL.Controllers.ExpenseTypeListController,
+                controllerAs: 'vm'
             })
             .state('notFound', {
                 url: '/notFound',
@@ -141,7 +153,7 @@ namespace PlaykaitSPL {
         $locationProvider.html5Mode(true);
     });
 
-    
+
     angular.module('PlaykaitSPL').factory('authInterceptor', (
         $q: ng.IQService,
         $window: ng.IWindowService,
@@ -166,6 +178,6 @@ namespace PlaykaitSPL {
         $httpProvider.interceptors.push('authInterceptor');
     });
 
-    
+
 
 }

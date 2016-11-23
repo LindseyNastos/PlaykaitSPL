@@ -301,3 +301,9 @@ textarea {
 .error {
     color:#BD0000;
 }
+
+.manage-child-div {
+    padding:20px;
+    font-size: 20px;
+    text-align: center;
+}

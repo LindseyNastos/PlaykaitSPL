@@ -1,0 +1,16 @@
+﻿<div class="add-form manage-child-div">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Expense Types</h3>
+            <hr />
+            <ul>
+                <li style="padding:5px" ng-repeat="t in vm.expenseTypes">
+                    {{t.name}}
+                    <button class="btn btn-sm btn-default"><i style="color:black" class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="btn btn-sm btn-danger"><i style="color:black" class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </li>
+            </ul>
+            <button class="btn btn-warning pull-right">Add new</button>
+        </div>
+    </div>
+</div>
