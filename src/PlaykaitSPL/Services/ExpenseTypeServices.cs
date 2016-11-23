@@ -34,7 +34,7 @@ namespace PlaykaitSPL.Services
 
         public void DeleteType(int id)
         {
-            var type = _repo.Query<CabinBill>().FirstOrDefault(e => e.Id == id);
+            var type = _repo.Query<ExpenseType>().FirstOrDefault(e => e.Id == id);
             _repo.Delete(type);
         }
     }

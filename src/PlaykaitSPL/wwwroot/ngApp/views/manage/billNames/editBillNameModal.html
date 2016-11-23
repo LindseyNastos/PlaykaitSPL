@@ -2,11 +2,12 @@
     <h4 class="modal-title">Edit this bill name</h4>
 </div>
 <div class="modal-body">
-    <div class="form-group" style="padding:10px; text-align:center">
-        <input class="form-control" type="text" ng-model="modal.billName" placeholder="Bill name" />
+    <div class="add-form form-group" style="padding:10px; padding-left:20px;">
+        <label>Name:</label>
+        <input class="form-control"  ng-trim="true" type="text" ng-model="modal.name" placeholder="Bill name" />
     </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-default" ng-click="modal.dismissModal()">Cancel</button>
-    <button class="btn btn-danger" ng-click="modal.editBillName()">Save</button>
+    <button class="btn btn-danger" ng-click="modal.updateBillName()">Save</button>
 </div>

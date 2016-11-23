@@ -132,14 +132,10 @@ namespace PlaykaitSPL {
             .state('manage.billNames', {
                 url: '/manage-billNames',
                 templateUrl: '/ngApp/views/manage/billNames/listBillNamesChild.html',
-                controller: PlaykaitSPL.Controllers.BillNameListController,
-                controllerAs: 'vm'
             })
             .state('manage.expenseTypes', {
                 url: '/manage-expenseTypes',
                 templateUrl: '/ngApp/views/manage/expenseTypes/listExpenseTypesChild.html',
-                controller: PlaykaitSPL.Controllers.ExpenseTypeListController,
-                controllerAs: 'vm'
             })
             .state('notFound', {
                 url: '/notFound',

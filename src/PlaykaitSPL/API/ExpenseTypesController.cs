@@ -47,6 +47,7 @@ namespace PlaykaitSPL.API
                 else
                 {
                     _service.EditType(type);
+                    return Ok();
                 }
             }
             return BadRequest(ModelState);

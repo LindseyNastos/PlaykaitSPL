@@ -2,11 +2,12 @@
     <h4 class="modal-title">Edit this expense type</h4>
 </div>
 <div class="modal-body">
-    <div class="form-group" style="padding:10px; text-align:center">
-        <input class="form-control" type="text" ng-model="modal.expenseType" placeholder="Expense type" />
-    </div>
+        <div class="add-form form-group" style="padding:10px; padding-left:20px;">
+            <label>Name:</label>
+            <input ng-trim="true" class="form-control" type="text" ng-model="modal.name" placeholder="Expense type" />
+        </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-default" ng-click="modal.dismissModal()">Cancel</button>
-    <button class="btn btn-danger" ng-click="modal.editExpenseType()">Save</button>
+    <button class="btn btn-danger" ng-click="modal.updateExpenseType()">Save</button>
 </div>

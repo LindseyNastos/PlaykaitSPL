@@ -28,7 +28,17 @@
         name: string;
     }
 
+    export class ExpenseType implements IExpenseType {
+        id: number;
+        name: string;
+    }
+
     export interface IBillName {
+        id: number;
+        name: string;
+    }
+
+    export class BillName implements IBillName {
         id: number;
         name: string;
     }

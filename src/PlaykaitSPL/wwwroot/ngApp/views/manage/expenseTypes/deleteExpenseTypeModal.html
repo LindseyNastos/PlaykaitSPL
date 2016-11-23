@@ -1,12 +1,12 @@
 ﻿<div class="modal-header">
-    <h4 class="modal-title">Delete this expense type</h4>
+    <h4 class="modal-title">Are you sure you want to delete this expense type?</h4>
 </div>
 <div class="modal-body">
     <div style="padding:10px; text-align:center">
-        <strong>{{modal.expenseType}}</strong>
+        <h3>{{modal.name}}</h3>
     </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-default" ng-click="modal.dismissModal()">Cancel</button>
-    <button class="btn btn-danger" ng-click="modal.deleteExpenseType()">Save</button>
+    <button class="btn btn-danger" ng-click="modal.confirmDelete()">Delete</button>
 </div>

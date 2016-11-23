@@ -47,6 +47,7 @@ namespace PlaykaitSPL.API
                 else
                 {
                     _service.EditBillName(name);
+                    return Ok();
                 }
             }
             return BadRequest(ModelState);
